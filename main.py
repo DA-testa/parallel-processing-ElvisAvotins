@@ -7,10 +7,11 @@ def parallel_processing(n, m, data):
         result.append((output_index, finish_time))
         output[0] = (finish_time + ti, output_index)
         j = 0
-        while j < n and output[j][0] < output[(j + 1) % n][0]:
-            output[j], output[(j + 1) % n] = output[(j + 1) % n], output[j]
+        while j < n-1 and output[j][0] > output[j+1][0]:
+            output[j], output[j+1] = output[j+1], output[j]
             j += 1
     return result
+
 
 def main():
     n, m = map(int, input().split())
